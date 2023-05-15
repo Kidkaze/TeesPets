@@ -172,7 +172,7 @@ do
                     readResult = Console.ReadLine();
                     if(readResult != null )
                     {
-                        animalAge = readResult.ToLower();
+                        animalAge = readResult;
                         if(animalAge != "?")
                         {
                             validEntry = int.TryParse(animalAge, out petAge);
@@ -180,6 +180,21 @@ do
                     }
 
                 }while (validEntry == false);
+
+                // get a description of the pet's physical appearance/condition - animalPhysicalDescription can be blank
+                do
+                {
+                    Console.WriteLine("Enter a physical description of the pet (size, colour, gender, weight, housebroken)");
+                    readResult= Console.ReadLine();
+                    if(readResult != null)
+                    {
+                        animalPhysicalDescription = readResult.ToLower();
+                        if (animalPhysicalDescription == "")
+                        {
+                            animalPhysicalDescription = "tbd";
+                        }
+                    }                  
+                } while (animalPhysicalDescription == "");
 
                 // increment petCount (the array is zero-based, so we increment the counter after adding to the array)
                 petCount = petCount + 1;
