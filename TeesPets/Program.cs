@@ -78,7 +78,7 @@ do
 
     Console.WriteLine("Welcome to the Tee's PetFriends app. Your main menu options are:");
     Console.WriteLine(" 1. List all of our current pet information");
-    Console.WriteLine(" 2. Add a new animal friend to the ourAnimals array");
+    Console.WriteLine(" 2. Add a new animal friend to TeesPets");
     Console.WriteLine(" 3. Ensure animal ages and physical descriptions are complete");
     Console.WriteLine(" 4. Ensure animal nicknames and personality descriptions are complete");
     Console.WriteLine(" 5. Edit an animal’s age");
@@ -195,6 +195,44 @@ do
                         }
                     }                  
                 } while (animalPhysicalDescription == "");
+
+                // get a description of the pet's personality - animalPersonalityDescription can be blank
+                do
+                {
+                    Console.WriteLine("Enter a description of the pet's personality (likes, dislikes, tricks, energy level");
+                    readResult= Console.ReadLine();
+                    if (readResult != null)
+                    {
+                        animalPersonalityDescription = readResult.ToLower();
+                        if (animalPersonalityDescription == "")
+                        {
+                            animalPersonalityDescription = "tbd";
+                        }
+                    }
+                }while (animalPersonalityDescription == "");
+
+                // get pert's nickname. animalNickName can be blank
+                do
+                {
+                    Console.WriteLine("Enter a nickname for the pet");
+                    readResult= Console.ReadLine();
+                    if (readResult != null)
+                    {
+                        animalNickname = readResult.ToLower();
+                        if (animalNickname == "")
+                            {
+                            animalNickname = "tbd";
+                        }
+                    }
+                } while (animalNickname == "");
+
+                //store the pet info in Array (zero based)
+                ourAnimals[petCount, 0] = "ID #: " + animalID;
+                ourAnimals[petCount, 1] = "Species: " + animalSpecies;
+                ourAnimals[petCount, 2] = "Age: " + animalAge;
+                ourAnimals[petCount, 3] = "Nickname: " + animalNickname;
+                ourAnimals[petCount, 4] = "Physical description: " + animalPhysicalDescription;
+                ourAnimals[petCount, 5] = "Personality: " + animalPersonalityDescription;
 
                 // increment petCount (the array is zero-based, so we increment the counter after adding to the array)
                 petCount = petCount + 1;
